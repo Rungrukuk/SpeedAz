@@ -1,3 +1,30 @@
+<?php 
+
+session_start();
+
+include "../TurboAz/php/db_conn.php";
+$email = "kamilo09ya@gmail.com";
+$sql = "SELECT * FROM carinfo WHERE email = ?";
+$stmt = $conn->prepare($sql);
+$stmt->execute([$email]);
+$car = $stmt->fetch();
+$emailsql =  $car['email'];
+$marka =  $car['marka'];
+$model =  $car['model'];
+$yurus =  $car['yurus'];
+$reng =  $car['reng'];
+$qiymet =  $car['qiymet'];
+$yanacaq =  $car['yanacaq'];
+$oturucu =  $car['oturucu'];
+$suretqutusu =  $car['suretqutusu'];
+$buraxilisili =  $car['buraxilisili'];
+$muherrikinhecmi =  $car['muherrikinhecmi'];
+$muherrikingucu =  $car['muherrikingucu'];
+$elavemelumat =  $car['elavemelumat'];
+$imgname =  $car['img_name'];
+$imgdata =  $car['img_data'];
+$status =  $car['status'];
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -183,15 +210,17 @@
       >
     </div>
     <!--CARDS-->
+
     <div class="cards-section">
       <div class="cont mt-4 cards g-0 main-content">
         <div class="card">
-          <img src="images/lexus.jpg" alt="" />
+        <img src="images/<?php echo $imgname ?>" alt="" />
           <div class="card-info">
-            <p>65 000$</p>
-            <p>Lexus ES 300h</p>
-            <p>2022,2.5l,0 km</p>
+            <p><?php echo $qiymet ?> $</p>
+            <p><?php echo $marka?>,<?php echo $model ?></p>
+            <p><?php echo $buraxilisili?>,<?php echo $muherrikingucu ?> l,<?php echo $yurus ?></p>
             <p>Baki,19.03.2022 16:16</p>
+            <p><?php echo $email ?></p>
           </div>
         </div>
         <div class="card">
